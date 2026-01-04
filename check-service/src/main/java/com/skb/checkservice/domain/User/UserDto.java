@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 
+@Builder
 public class UserDto {
 
     @Getter
@@ -17,7 +18,23 @@ public class UserDto {
 
         private String newUser;
 
+        public String getNewUser() {
+            return newUser;
+        }
+
+        public String getExistUser() {
+            return existUser;
+        }
+
         private String existUser;
+
+        public Response() {}
+
+        // ✅ all-args constructor
+        public Response(String newUser, String existUser) {
+            this.newUser = newUser;
+            this.existUser = existUser;
+        }
     }
 
 }

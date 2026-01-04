@@ -8,13 +8,18 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class MessageSender {
 
     private static final Logger logger = LoggerFactory.getLogger(MessageSender.class);
 
     private final KafkaTemplate<String, UserDto.Response> dtoKafkaTemplate;
     private final KafkaTemplate<String,String> stringKafkaTemplate;
+
+    public MessageSender(KafkaTemplate<String, UserDto.Response> dtoKafkaTemplate,KafkaTemplate<String,String> stringKafkaTemplate) {
+        this.dtoKafkaTemplate = dtoKafkaTemplate;
+        this.stringKafkaTemplate = stringKafkaTemplate;
+    }
 
     public void sendMessage(String topic, UserDto.Response dto) {
         dtoKafkaTemplate.send(topic, dto);

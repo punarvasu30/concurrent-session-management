@@ -13,6 +13,17 @@ public class ExistDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
     public static class Request{
+        public String getNewUser() {
+            return newUser;
+        }
+
+        public WatchInfoDto.Request getWatchInfo() {
+            return watchInfo;
+        }
+
+        public String getExistUser() {
+            return existUser;
+        }
 
         private String newUser;
 
@@ -37,6 +48,13 @@ public class ExistDto {
             existUser = dtoExistUser;
         }
 
+        public String getNewUser() {
+            return newUser;
+        }
+
+        public String getExistUser() {
+            return existUser;
+        }
     }
 
 }

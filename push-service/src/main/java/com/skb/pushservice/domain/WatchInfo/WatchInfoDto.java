@@ -26,6 +26,33 @@ public class WatchInfoDto {
 
         private boolean running;
 
+        public String getEpisodeId() {
+            return episodeId;
+        }
+
+        public String getPcid() {
+            return pcid;
+        }
+
+        public String getPlayStart() {
+            return playStart;
+        }
+
+        public String getStbId() {
+            return stbId;
+        }
+
+        public String getMacAddress() {
+            return macAddress;
+        }
+
+        public String getPlayEnd() {
+            return playEnd;
+        }
+
+        public boolean isRunning() {
+            return running;
+        }
     }
 
 }

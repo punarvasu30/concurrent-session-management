@@ -9,12 +9,15 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class MessageSender {
 
     private static final Logger logger = LoggerFactory.getLogger(MessageSender.class);
 
     private final KafkaTemplate<String, WatchInfoDto.Request> watchInfoKafkaTemplate;
+    public MessageSender(KafkaTemplate<String, WatchInfoDto.Request> watchInfoKafkaTemplate) {
+        this.watchInfoKafkaTemplate = watchInfoKafkaTemplate;
+    }
 
     public void sendMessage(String topic, WatchInfoDto.Request dto) {
         watchInfoKafkaTemplate.send(topic, dto);

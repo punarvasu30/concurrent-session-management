@@ -1,13 +1,16 @@
 server:
   port: 9000
+
 spring:
+  application:
+    name: check-service
+
   jackson:
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
-  application:
-    name: check-service
+
   jpa:
-    database-platform: org.hibernate.dialect.MYSQL5Dialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect
     open-in-view: false
     show-sql: false
     properties:
@@ -17,6 +20,7 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
   redis:
     cluster:
       nodes:
@@ -26,7 +30,9 @@ spring:
         - 127.0.0.1:7003
         - 127.0.0.1:7004
         - 127.0.0.1:7005
+
   kafka:
+    bootstrap-servers: localhost:9093,localhost:9094,localhost:9095
     consumer:
       auto-offset-reset: earliest
-    bootstrap-servers: localhost:9093,localhost:9094,localhost:9095
+

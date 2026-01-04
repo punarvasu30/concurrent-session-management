@@ -13,6 +13,34 @@ public class WatchInfoDto {
 
         private String pcid;
 
+        public String getPcid() {
+            return pcid;
+        }
+
+        public String getEpisodeId() {
+            return episodeId;
+        }
+
+        public String getStbId() {
+            return stbId;
+        }
+
+        public String getMacAddress() {
+            return macAddress;
+        }
+
+        public String getPlayStart() {
+            return playStart;
+        }
+
+        public String getPlayEnd() {
+            return playEnd;
+        }
+
+        public boolean isRunning() {
+            return running;
+        }
+
         private String episodeId;
 
         private String stbId;
@@ -26,15 +54,15 @@ public class WatchInfoDto {
         private boolean running;
 
         public WatchInfo toEntity() {
-            return WatchInfo.builder()
-                            .pcid(pcid)
-                            .episodeId(episodeId)
-                            .stbId(stbId)
-                            .macAddress(macAddress)
-                            .playStart(playStart)
-                            .playEnd(playEnd)
-                            .running(running)
-                            .build();
+            return new WatchInfo(
+                    pcid,
+                    episodeId,
+                    stbId,
+                    macAddress,
+                    playStart,
+                    playEnd,
+                    running
+            );
         }
     }
 

@@ -20,6 +20,34 @@ public class WatchInfo {
 
     private String stbId;
 
+    public String getPcid() {
+        return pcid;
+    }
+
+    public String getEpisodeId() {
+        return episodeId;
+    }
+
+    public String getStbId() {
+        return stbId;
+    }
+
+    public String getPlayStart() {
+        return playStart;
+    }
+
+    public String getMacAddress() {
+        return macAddress;
+    }
+
+    public String getPlayEnd() {
+        return playEnd;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
     private String playStart;
 
     private String macAddress;

@@ -27,10 +27,11 @@ public class CheckViewingService {
         if (isRunning) {
             String existUser = redisClusterService.getExistUser(request.getStbId(), request.getEpisodeId());
 
-            response = UserDto.Response.builder()
-                                       .newUser(request.getPcid())
-                                       .existUser(existUser)
-                                       .build();
+            response = new UserDto.Response(
+                    request.getPcid(),
+                    existUser
+            );
+
 
             messageSender.sendMessage(existTopic, response);
         } else {
