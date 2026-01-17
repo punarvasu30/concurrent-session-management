@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 @ConfigurationProperties(prefix = "spring.redis.cluster")
-public class ClusterConfigurationProperties { //spring boot가 설정 파일에서 읽어온 값을 관리할 객체를 나타냄
+public class ClusterConfigurationProperties {
 
     List<String> nodes;
 

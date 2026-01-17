@@ -27,7 +27,6 @@ class RedisConfig {
 
         clusterConfigurationProperties.getNodes()
                                       .forEach(s -> {
-                                          //parse host and port
                                           String[] url = s.split(":");
                                           redisClusterConfiguration.clusterNode(url[0], Integer.parseInt(url[1]));
                                       });
@@ -40,9 +39,6 @@ class RedisConfig {
         RedisTemplate<String, WatchInfo> redisTemplate = new RedisTemplate<>();
 
         redisTemplate.setConnectionFactory(this.redisConnectionFactory());
-
-        //if default serializer == JdkSerializationRedisSerializer -> unicode error occur
-        //new Jackson2JsonRedisSerializer<>()  -> json 포맷으로 데이터를 저장하는 경우
 
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new StringRedisSerializer());
