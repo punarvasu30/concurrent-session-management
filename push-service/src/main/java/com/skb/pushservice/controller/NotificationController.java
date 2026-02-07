@@ -30,25 +30,19 @@ public class NotificationController {
     @PostMapping("/send")
     @ResponseBody
     public ResponseEntity<?> send(@RequestBody WatchInfoDto.Request request) {
-        //connect user to watch VOD
         connectService.connectUser(request);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/force")
     public ResponseEntity<?> forceConnect(@RequestBody ExistDto.Request request) {
-
         connectService.forceConnect(request);
-
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
 
     @PatchMapping("/stop")
     public ResponseEntity<?> stopConnect(@RequestBody WatchInfoDto.Request request) {
-
         connectService.stopConnect(request);
-
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

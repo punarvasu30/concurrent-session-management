@@ -29,34 +29,38 @@ public class MessageConsumerConfig {
 
     @Bean
     Map<String, Object> consumerConfigs() {
-        Map<String, Object> props = new HashMap<>();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootStrapServers);
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, existGroup);
-        return props;
+        Map<String, Object> prop = new HashMap<>();
+        prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootStrapServers);
+        prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        prop.put(ConsumerConfig.GROUP_ID_CONFIG, existGroup);
+        return prop;
     }
 
     @Bean
     Map<String, Object> successConsumerConfigs() {
-        Map<String, Object> props = new HashMap<>();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootStrapServers);
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, successResponse);
-        return props;
+        Map<String, Object> prop = new HashMap<>();
+        prop.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootStrapServers);
+        prop.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        prop.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        prop.put(ConsumerConfig.GROUP_ID_CONFIG, successResponse);
+        return prop;
     }
 
     @Bean
     public ConsumerFactory<String, ExistDto.Response> existConsumerFactory() {
+
         return new DefaultKafkaConsumerFactory<>(consumerConfigs(),
                 new StringDeserializer(),
                 new JsonDeserializer<>(ExistDto.Response.class, false));
+
     }
 
     @Bean
     public ConsumerFactory<String, String> successConsumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(successConsumerConfigs(), new StringDeserializer(), new StringDeserializer());
+        return new DefaultKafkaConsumerFactory<>(successConsumerConfigs(),
+                new StringDeserializer(),
+                new StringDeserializer());
     }
 
     @Bean

@@ -25,7 +25,6 @@ public class ConnectService {
     }
 
     public void connectUser(WatchInfoDto.Request request) {
-        //connect User with restTemplate
         UriComponents uri = UriComponentsBuilder.fromHttpUrl(url)
                                                 .build();
 
@@ -38,18 +37,13 @@ public class ConnectService {
 
     public void forceConnect(ExistDto.Request request) {
 
-        //push alert to exist user
         notificationService.notifyDisconnect(new ExistDto.Response(request.getNewUser(), request.getExistUser()));
-
-        //update watch info in redis
         messageSender.sendMessage(forceTopic, request.getWatchInfo());
 
     }
 
     public void stopConnect(WatchInfoDto.Request request) {
-
         messageSender.sendMessage(disconnectTopic, request);
-
     }
 
 }

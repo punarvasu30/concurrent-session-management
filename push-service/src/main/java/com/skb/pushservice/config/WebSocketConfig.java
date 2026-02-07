@@ -12,8 +12,6 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry){
-        //Register WebSocket => "/ws" endpoint, enable the SockJS protocol
-        //SockJS can allow messaging options if websocket is not available!
         registry.addEndpoint("/ws")
                 .setAllowedOrigins("*")
                 .withSockJS();

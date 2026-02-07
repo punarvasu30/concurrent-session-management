@@ -10,12 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    /**
-     * Enable authentication with declared user : UserA, UserB
-     *
-     * Spring Security provides default login form where insert userName and password.
-     */
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 
@@ -25,10 +19,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             .withUser("UserB").password("{noop}UserB").roles("USER");
 
     }
-
-    /**
-     * Disable CSRF to simplify this demo and use default login form.
-     */
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{

@@ -27,25 +27,24 @@ public class MessageProducerConfig {
 
     @Bean
     public Map<String,Object> dtoProducerConfigs(){
-        Map<String,Object> props = new HashMap<>();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,bootStrapServers);
-        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        Map<String,Object> prop = new HashMap<>();
+        prop.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,bootStrapServers);
+        prop.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
-        return props;
+        return prop;
     }
 
-    /*
-     * TODO : FIX factory & template generic...
-     */
 
     @Bean
     public ProducerFactory<String, WatchInfoDto.Request> watchInfoProducerFactory(){
+
         return new DefaultKafkaProducerFactory<>(dtoProducerConfigs());
     }
 
     @Bean
     public KafkaTemplate<String, WatchInfoDto.Request> watchInfoKafkaTemplate(){
+
         return new KafkaTemplate<>(watchInfoProducerFactory());
     }
 
