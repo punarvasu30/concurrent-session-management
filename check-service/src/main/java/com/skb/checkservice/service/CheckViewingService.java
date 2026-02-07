@@ -44,6 +44,7 @@ public class CheckViewingService {
     }
 
     public void updateLog(WatchInfoDto.Request dto) {
+
         redisClusterService.update(dto);
     }
 

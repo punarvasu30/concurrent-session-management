@@ -40,7 +40,7 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "watch-info-group");
         return new DefaultKafkaConsumerFactory<>(props,
                 new StringDeserializer(),
-                new JsonDeserializer<>(WatchInfoDto.Request.class, false));\
+                new JsonDeserializer<>(WatchInfoDto.Request.class, false));
 
     }
 

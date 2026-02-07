@@ -23,6 +23,7 @@ class RedisConfig {
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
+
         RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration();
 
         clusterConfigurationProperties.getNodes()

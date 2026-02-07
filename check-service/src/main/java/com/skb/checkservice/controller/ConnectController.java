@@ -18,6 +18,7 @@ public class ConnectController {
 
     @PostMapping("/connect")
     public boolean connectUser(@RequestBody WatchInfoDto.Request request) {
+
         return checkViewingService.checkLog(request);
     }
 

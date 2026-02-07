@@ -14,8 +14,6 @@ import java.io.Serializable;
 @RedisHash("watchLog")
 @Getter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class WatchInfo implements Serializable {
 
