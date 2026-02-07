@@ -19,30 +19,30 @@ public class NotificationController {
 
     @RequestMapping("/")
     public String index() {
-        return "index";
+        return "index here";
     }
 
     @RequestMapping("/notifications")
     public String notifications() {
-        return "notifications";
+        return "notifications here";
     }
 
     @PostMapping("/send")
     @ResponseBody
-    public ResponseEntity<?> send(@RequestBody WatchInfoDto.Request request) {
-        connectService.connectUser(request);
+    public ResponseEntity<?> send(@RequestBody WatchInfoDto.Request req) {
+        connectService.connectUser(req);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/force")
-    public ResponseEntity<?> forceConnect(@RequestBody ExistDto.Request request) {
-        connectService.forceConnect(request);
+    public ResponseEntity<?> forceConnect(@RequestBody ExistDto.Request req) {
+        connectService.forceConnect(req);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PatchMapping("/stop")
-    public ResponseEntity<?> stopConnect(@RequestBody WatchInfoDto.Request request) {
-        connectService.stopConnect(request);
+    public ResponseEntity<?> stopConnect(@RequestBody WatchInfoDto.Request req) {
+        connectService.stopConnect(req);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
